@@ -1,6 +1,7 @@
 import { Router } from "express";
 import axios from "axios";
-import { getWeatherQuery } from "./utils/query";
+import { getWeatherQuery } from "./utils/weatherQuery";
+import { WeatherRequest } from "../types";
 
 const router = Router();
 const apiKey = process.env.OPEN_WEATHER_API_KEY;
@@ -12,9 +13,9 @@ const weatherApi = axios.create({
   },
 });
 
-router.get("/:lat/:lon", async (req, res) => {
+router.get("/", async (req: WeatherRequest, res) => {
   try {
-    const { lat, lon } = req.params;
+    const { lat, lon } = req.query;
     const weatherQuery = getWeatherQuery(lat, lon);
     const response = await weatherApi.get(weatherQuery);
 

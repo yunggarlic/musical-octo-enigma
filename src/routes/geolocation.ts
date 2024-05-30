@@ -1,7 +1,8 @@
-import { Router, Request, Response } from "express";
 import axios from "axios";
-import { getGeolocationQuery } from "./utils/query";
-import { WeatherRequest } from "../../types";
+import { Router } from "express";
+import { getGeolocationQuery } from "./utils/geolocationQuery";
+import { GeolocationRequest } from "../types";
+
 const router = Router();
 const apiKey = process.env.OPEN_WEATHER_API_KEY;
 
@@ -12,7 +13,7 @@ const GeolocationAPI = axios.create({
   },
 });
 
-router.get("/", async (req: WeatherRequest, res) => {
+router.get("/", async (req: GeolocationRequest, res) => {
   try {
     const { city, state, country, limit = "0" } = req.query;
     if (!city) {
