@@ -12,6 +12,7 @@ type GeolocationRequest = Request<{}, {}, {}, GeolocationRequestQuery>;
 interface WeatherRequestQuery {
   lat: string;
   lon: string;
+  mode?: string;
 }
 
 type WeatherRequest = Request<{}, {}, {}, WeatherRequestQuery>;
