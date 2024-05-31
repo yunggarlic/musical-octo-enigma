@@ -19,9 +19,9 @@ const GeocodeResults = () => {
       {queryResults?.length > 0 && (
         <ul className="weather-search__city-list">
           {queryResults.map((data: GeocodeData) => (
-            <li>
+            <li key={`cityoption ${data.lat} ${data.lon}`}>
               <button
-                key={`cityoption ${data.lat} ${data.lon}`}
+                key={`cityoptionbutton ${data.lat} ${data.lon}`}
                 onClick={() => handleGeocodeResultClick(data)}
               >
                 {data.name}, {data.state} {data.country}
