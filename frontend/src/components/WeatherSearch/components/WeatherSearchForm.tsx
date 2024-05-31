@@ -1,4 +1,4 @@
-import { useContext, ChangeEvent } from "react";
+import { useContext, ChangeEvent, useEffect } from "react";
 import { WeatherSearchDispatchContext } from "../contexts";
 import GeocodeResults from "./GeocodeResults";
 

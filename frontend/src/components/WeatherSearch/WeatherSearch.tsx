@@ -31,7 +31,7 @@ const WeatherSearch = () => {
         <h1>Weather Forecast</h1>
         <p>Enter a location separated by commas (city, state, country)</p>
         <WeatherSearchForm query={state.query} />
-        <WeatherDashboard data={state.weatherData} />
+        <WeatherDashboard />
       </div>
     </WeatherSearchProvider>
   );
