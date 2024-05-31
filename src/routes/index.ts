@@ -1,2 +1,2 @@
-export { default as weatherRouter } from "./weather";
-export { default as geolocationRouter } from "./geolocation";
+export { default as weatherRouter } from "./weatherRoutes";
+export { default as geolocationRouter } from "./geolocationRoutes";
