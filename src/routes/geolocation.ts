@@ -27,10 +27,22 @@ router.get("/", async (req: GeolocationRequest, res) => {
       },
     });
 
-    res.json(response.data);
+    res.json(filterData(response.data, state, country));
   } catch (error) {
     res.status(500).json({ error: "Error fetching geolocation data" });
   }
 });
+
+function filterData(data: any, state?: string, country?: string): boolean {
+  return data.filter(
+    (data: any) =>
+      filterFunc(data.state, state) || filterFunc(data.country, country)
+  );
+}
+
+function filterFunc(mainStr?: string, substr?: string): boolean {
+  if (!mainStr || !substr) return true;
+  return mainStr.toLowerCase().startsWith(substr.toLowerCase());
+}
 
 export default router;
