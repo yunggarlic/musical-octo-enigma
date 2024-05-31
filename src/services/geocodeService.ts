@@ -1,5 +1,4 @@
 import axios from "axios";
-import { filterGeocodeData } from "../utils/filterData";
 import { getGeolocationQuery } from "../utils/geolocationQuery";
 
 const GeolocationAPI = axios.create({
