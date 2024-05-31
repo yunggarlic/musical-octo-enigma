@@ -6,7 +6,7 @@ export const WeatherSearchContext = createContext<WeatherSearchState>(
 );
 export const WeatherSearchDispatchContext = createContext<
   React.Dispatch<WeatherSearchAction>
->((v: WeatherSearchAction) => {});
+>(() => {});
 
 export const WeatherSearchProvider = ({
   state,

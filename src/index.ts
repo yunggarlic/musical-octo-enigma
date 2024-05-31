@@ -11,8 +11,8 @@ const port = process.env.PORT || 1902;
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/weather", weatherRouter);
-app.use("/api/geolocation", geolocationRouter);
+app.use("/api/weatherRoutes", weatherRouter);
+app.use("/api/geolocationRoutes", geolocationRouter);
 
 app.use("*", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "frontend/dist/index.html"));
