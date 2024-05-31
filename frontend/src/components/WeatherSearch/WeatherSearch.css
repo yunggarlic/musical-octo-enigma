@@ -1,0 +1,22 @@
+.weather-search__form {
+  position: relative;
+}
+
+.weather-search__city-list {
+  margin: 0;
+  padding: 0;
+  background: white;
+  position: absolute;
+  top: 2rem;
+  width: 100%;
+  min-height: calc(1.25rem * 2);
+  max-height: calc(1.25rem * 6); /* show five cities max */
+  overflow-y: auto;
+  list-style-type: none;
+  border: 1px solid black;
+  outline: none;
+}
+
+.weather-search__city-list button {
+  width: 100%;
+}
