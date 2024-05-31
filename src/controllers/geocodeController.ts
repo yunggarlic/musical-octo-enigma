@@ -12,7 +12,7 @@ export const fetchGeocodeData = async (
     if (!city) {
       return res.status(400).json({ error: "City parameter is required" });
     }
-    const data = getGeocode(city, state, country, limit);
+    const data = await getGeocode(city, state, country, limit);
     const filteredData = filterGeocodeData(data, state, country);
     res.json(filteredData);
   } catch (error) {

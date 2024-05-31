@@ -5,7 +5,7 @@ import { getWeatherData } from "../services/weatherService";
 export const fetchWeatherData = async (req: WeatherRequest, res: Response) => {
   try {
     const { lat, lon, mode = "kelvin" } = req.query;
-    const data = getWeatherData(lat, lon, mode);
+    const data = await getWeatherData(lat, lon, mode);
     res.json(data);
   } catch (error) {
     res.status(500).json({ error: "Error fetching weather data" });
