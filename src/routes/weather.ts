@@ -1,7 +1,7 @@
 import { Router } from "express";
 import axios from "axios";
 import { getWeatherQuery } from "./utils/weatherQuery";
-import { WeatherRequest } from "../types";
+import { WeatherRequest } from "../types/types";
 
 const router = Router();
 const apiKey = process.env.OPEN_WEATHER_API_KEY;
