@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { WeatherSearchContext } from "../contexts";
 
-const WeatherDashboard = ({ data }: { data: WeatherData }) => {
-  const { weatherData } = useContext(WeatherSearchContext);
+const WeatherDashboard = () => {
+  const { weatherData, geocodeData } = useContext(WeatherSearchContext);
 
   if (Object.keys(weatherData).length === 0) {
     return null;
@@ -10,11 +10,13 @@ const WeatherDashboard = ({ data }: { data: WeatherData }) => {
 
   return (
     <div>
-      <h2>{data.name}</h2>
+      <h2>
+        {geocodeData.name}, {geocodeData.state}, {geocodeData.country}
+      </h2>
       <div className="weather-dashboard__content">
-        {data.weather.map((weather) => (
-          <div key={`${weather.id}-${data.name}`}>
-            <h2>{data.main.temp}</h2>
+        {weatherData.weather.map((weather) => (
+          <div key={`${weather.id}-${weatherData.name}`}>
+            <h2>{weatherData.main.temp}</h2>
             <p>{weather.description}</p>
           </div>
         ))}
