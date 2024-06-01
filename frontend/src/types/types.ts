@@ -1,11 +1,12 @@
-interface WeatherSearchState {
+type WeatherSearchState = {
   query: string;
   queryResults: GeocodeData[];
   geocodeData: GeocodeData;
   weatherData: WeatherData;
-}
+  forecastData: ForecastData;
+};
 
-interface WeatherData {
+type WeatherData = {
   coord: {
     lon: number;
     lat: number;
@@ -48,16 +49,18 @@ interface WeatherData {
   id: number;
   name: string;
   cod: number;
-}
+};
 
-interface WeatherSearchAction {
+type WeatherSearchAction = {
   type: string;
   payload?: any;
-}
-interface GeocodeData {
+};
+type GeocodeData = {
   name: string;
   state: string;
   country: string;
   lat: number;
   lon: number;
-}
+};
+
+type ForecastData = {};
