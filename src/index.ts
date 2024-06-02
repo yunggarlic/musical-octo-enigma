@@ -15,9 +15,12 @@ app.use("/api/weather", weatherRouter);
 app.use("/api/geolocation", geolocationRouter);
 app.use("/api/forecast", forecastRouter);
 
-app.use("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "frontend/dist/index.html"));
+app.use(express.static(path.join(__dirname, "..", "frontend", "dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "frontend", "dist", "index.html"));
 });
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
