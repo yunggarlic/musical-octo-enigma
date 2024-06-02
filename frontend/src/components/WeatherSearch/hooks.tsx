@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from "react";
-import { GeolocationAPI, WeatherAPI } from "../../api";
+import { GeolocationAPI, WeatherAPI, ForecastAPI } from "../../api";
 import { getGeolocationQuery } from "../../api/queries";
 import debounce from "lodash/debounce";
 
@@ -32,15 +32,36 @@ export const useFetchWeatherData = (
   dispatch: React.Dispatch<WeatherSearchAction>
 ) => {
   return useCallback(
-    async (lat: number, lon: number) => {
+    async (lat: number, lon: number, units: string) => {
       try {
-        const response = await WeatherAPI.get(`?lat=${lat}&lon=${lon}`);
+        const response = await WeatherAPI.get(
+          `?lat=${lat}&lon=${lon}&units=${units}`
+        );
         dispatch({
           type: "SET_WEATHER_DATA",
           payload: { weatherData: response.data },
         });
       } catch (error) {
         console.error("Error fetching weather data:", error);
+      }
+    },
+    [dispatch]
+  );
+};
+
+export const useFetchForecastData = (
+  dispatch: React.Dispatch<WeatherSearchAction>
+) => {
+  return useCallback(
+    async (lat: number, lon: number, units: string) => {
+      try {
+        const response = await ForecastAPI.get(`?lat=${lat}&lon=${lon}&units=${units}`);
+        dispatch({
+          type: "SET_FORECAST_DATA",
+          payload: { forecastData: response.data },
+        });
+      } catch (error) {
+        console.error("Error fetching forecast data:", error);
       }
     },
     [dispatch]

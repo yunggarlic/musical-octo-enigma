@@ -1,8 +1,12 @@
 const weatherSearchDefaultState = {
-  query: "",
+  query: {
+    geocodeQuery: "",
+    tempUnit: "" as "metric" | "imperial" | "standard",
+  },
   queryResults: [] as GeocodeData[],
   geocodeData: {} as GeocodeData,
   weatherData: {} as WeatherData,
+  forecastData: [] as ForecastData[],
 };
 
 const weatherSearchReducer = (
@@ -40,16 +44,17 @@ const weatherSearchReducer = (
         ...state,
         weatherData: weatherSearchDefaultState.weatherData,
       };
-    case "SET_QUERY": {
+
+    case "SET_FORECAST_DATA": {
       return {
         ...state,
-        query: action.payload.query ?? state.query,
+        forecastData: action.payload.forecastData ?? state.forecastData,
       };
     }
-    case "CLEAR_QUERY": {
+    case "CLEAR_FORECAST_DATA": {
       return {
         ...state,
-        query: weatherSearchDefaultState.query,
+        forecastData: weatherSearchDefaultState.forecastData,
       };
     }
     default:
@@ -57,4 +62,35 @@ const weatherSearchReducer = (
   }
 };
 
-export { weatherSearchReducer, weatherSearchDefaultState };
+const weatherQueryDefaultState = {
+  geocodeQuery: "",
+  tempUnit: "metric" as "metric" | "imperial" | "standard",
+};
+
+const weatherQueryReducer = (
+  state: WeatherQuery,
+  action: WeatherSearchAction
+): WeatherQuery => {
+  switch (action.type) {
+    case "SET_GEOCODE_QUERY":
+      return {
+        ...state,
+        geocodeQuery: action.payload.geocodeQuery ?? state.geocodeQuery,
+      };
+
+    case "SET_TEMP_UNIT":
+      return {
+        ...state,
+        tempUnit: action.payload.tempUnit ?? state.tempUnit,
+      };
+    default:
+      return state;
+  }
+};
+
+export {
+  weatherSearchReducer,
+  weatherSearchDefaultState,
+  weatherQueryReducer,
+  weatherQueryDefaultState,
+};

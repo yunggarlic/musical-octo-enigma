@@ -1,4 +1,5 @@
 import { getWeatherQuery } from "../utils/weatherQuery";
+
 import axios from "axios";
 
 const weatherApi = axios.create({
@@ -11,13 +12,13 @@ const weatherApi = axios.create({
 export const getWeatherData = async (
   lat: string,
   lon: string,
-  mode: string
+  units?: string
 ) => {
   try {
-    const weatherQuery = getWeatherQuery(lat, lon, mode);
+    const weatherQuery = getWeatherQuery(lat, lon, units);
     const response = await weatherApi.get(weatherQuery);
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };

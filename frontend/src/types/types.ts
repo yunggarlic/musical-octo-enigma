@@ -1,9 +1,14 @@
 type WeatherSearchState = {
-  query: string;
+  query: WeatherQuery;
   queryResults: GeocodeData[];
   geocodeData: GeocodeData;
   weatherData: WeatherData;
   forecastData: ForecastData;
+};
+
+type WeatherQuery = {
+  geocodeQuery: string;
+  tempUnit: string;
 };
 
 type WeatherData = {

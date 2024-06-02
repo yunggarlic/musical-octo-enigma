@@ -20,3 +20,17 @@
 .weather-search__city-list button {
   width: 100%;
 }
+
+.forecast {
+  display: column;
+}
+
+.forecast__card {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+}
+
+.forecast .forecast__card:nth-child(odd) {
+  background-color: #f9f9f9;
+}
