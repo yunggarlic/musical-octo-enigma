@@ -18,4 +18,4 @@ OR
 ### Build it yourself
 
 1) From the `frontend` folder, run `npm run build`
-2) In another terminal, from the `frontend` folder, run `npm run dev`
+2) Run `cd ../ && npm run start`
