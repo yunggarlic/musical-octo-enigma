@@ -3,7 +3,7 @@ type WeatherSearchState = {
   queryResults: GeocodeData[];
   geocodeData: GeocodeData;
   weatherData: WeatherData;
-  forecastData: ForecastData;
+  forecastData: ForecastData[];
 };
 
 type WeatherQuery = {

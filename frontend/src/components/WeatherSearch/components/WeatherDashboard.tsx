@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { WeatherSearchContext } from "../contexts";
 import { Forecast } from "./";
 import { formatTemp } from "../utils/format";

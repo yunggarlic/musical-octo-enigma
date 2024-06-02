@@ -5,7 +5,7 @@ const Forecast = () => {
   const { forecastData } = useContext(WeatherSearchContext);
   return (
     <div className="forecast">
-      {forecastData.map((forecast) => (
+      {forecastData.map((forecast: any) => (
         <ForecastCard key={forecast.dt} forecast={forecast} />
       ))}
     </div>

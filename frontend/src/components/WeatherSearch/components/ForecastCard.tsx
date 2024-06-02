@@ -1,6 +1,6 @@
 import { formatTime, formatTemp } from "../utils/format";
 
-const ForecastCard = ({ forecast }) => {
+const ForecastCard = ({ forecast }: any) => {
   return (
     <div className="forecast__card">
       <span>{formatTime(forecast.dt_txt)}</span>
